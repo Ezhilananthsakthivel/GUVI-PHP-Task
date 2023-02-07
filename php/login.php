@@ -9,14 +9,16 @@ $user = mysqli_query($conn, $sql);
 if (mysqli_num_rows($user) == 1) {
     $row = mysqli_fetch_assoc($user);
     if ($row['password'] == $password) {
-        echo json_encode(array('uname'=>$row['uname'],'email'=>$row['email']));
-        exit;
+        echo $row['uname'];
+        exit();
     }
     else{
         echo "Incorect Password";
-        exit;
+        exit();
     }
 }else{
     echo "User Not Registered";
-    exit;
+    exit();
 }
+
+?>
