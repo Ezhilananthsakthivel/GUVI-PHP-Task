@@ -9,16 +9,22 @@ $uname = $_POST["uname"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 
-$user = mysqli_query($con,"select * from users where uname = '{$uname}'");
+$user = mysqli_query($con,"select * from users where uname = '$uname'");
+
 if(mysqli_num_rows($user) > 0){
     echo "User Already Exists";
     exit();
 }
+else{
+    mysqli_query($con,"insert into users (uname,email,password) values ('$uname','$email','$password')");
 
-$sql = "insert into users (uname,email,password) values('{$uname}','{$email}','{$password}')";
-mysqli_query($con,$sql);
-$db = $mcon->guvitask->users;
-$db->insertOne(["uname"=>"{$uname}"]);
-echo "Registration Successfully";
+    $db = $mcon->guvitask->users;
+    $db->insertOne(['uname'=> $uname]);
+    
+    echo "Registration Successfully";
+
+}
+    
+
 
 ?>
