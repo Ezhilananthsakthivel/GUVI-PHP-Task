@@ -7,15 +7,15 @@ $(document).ready(function () {
             type: 'POST',
             data: $('form').serialize(),
             beforeSend: function () {
-                $('#submit').val('Loading...')
+                $('.submit').val('Loading...')
             },
             success: function (res) {
-                    if (res != "User Already Exists") {
-                        alert("Registration Successfully")
-                        window.location = 'index.html'
-                    }
+                if (res != "User Already Exists") {
+                    alert(res)
+                    window.location = 'index.html'
+                }
                 else {
-                    alert("User Already Exists")
+                    alert(res)
                 }
             }
         })
