@@ -2,19 +2,26 @@ $(document).ready(function () {
     $('form').submit(function (e) {
         e.preventDefault()
 
+        const uname = $('.uname').val()
+
         $.ajax({
             url: 'php/login.php',
             type: 'POST',
             data: $('form').serialize(),
             beforeSend: function () {
-                $('#submit').val('Loading...')
+                $('.submit').val('Loading...')
             },
             success: function (res) {
-                if (res != "Incorect password" && res != "User Not Registered") {
-                    window.location = 'profile.html'
+                if (res != "User Not Registered") {
+                    if (res != "Incorect Password") {
+                        window.localStorage.setItem('uname', res)
+                        alert(res)
+                    } else {
+                        alert(res)
+                    }
                 }
                 else {
-                    alert("Failed... Try Again")
+                    alert(res)
                 }
             }
         })

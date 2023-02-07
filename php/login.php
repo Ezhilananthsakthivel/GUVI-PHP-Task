@@ -1,10 +1,11 @@
 <?php
 
 $con = mysqli_connect('localhost:3308','root','','guvi_task');
+
 $uname = $_POST["uname"];
 $password = $_POST["password"];
-$sql = "select * from users where uname = '{$uname}'";
-$user = mysqli_query($conn, $sql);
+
+$user = mysqli_query($con, "select * from users where uname = '$uname'");
 
 if (mysqli_num_rows($user) == 1) {
     $row = mysqli_fetch_assoc($user);
@@ -16,9 +17,12 @@ if (mysqli_num_rows($user) == 1) {
         echo "Incorect Password";
         exit();
     }
-}else{
+}
+else{
     echo "User Not Registered";
     exit();
 }
+
+    
 
 ?>
