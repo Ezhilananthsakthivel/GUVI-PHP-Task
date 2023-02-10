@@ -15,7 +15,7 @@ $(document).ready(function () {
                 if (res != "User Not Registered") {
                     if (res != "Incorect Password") {
                         window.localStorage.setItem('uname', res)
-                        alert(res)
+                        window.location = "profile.html"
                     } else {
                         alert(res)
                     }
