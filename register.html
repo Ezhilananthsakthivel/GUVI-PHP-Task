@@ -14,7 +14,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        
+
 </head>
 
 <body style="background-color:aquamarine ">
@@ -22,10 +22,14 @@
         <div class="row">
             <div class="col-md-3 col-sm-3"></div>
             <div class="col-md-5 col-sm-5 mt-5">
-                <div class="card mt-5 text-center">
+                <div class="card mt-5">
                     <div class="card-body">
-                        <h4 class="card-title">Registration</h4>
+                        <h4 class="card-title text-center">Registration</h4>
                         <form>
+                            <div class="mb-3">
+                                <label class="form-label">User Name: </label>
+                                <input type="text" class="form-control p-2 uname" name="uname" required>
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Email: </label>
                                 <input type="email" class="form-control p-2 email" name="email"
@@ -36,14 +40,26 @@
                                 <input type="text" class="form-control p-2 pnumber" name="pnumber" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">User Name: </label>
-                                <input type="text" class="form-control p-2 uname" name="uname" required>
+                                <label class="form-label">Date of Birth: </label>
+                                <input type="date" class="form-control p-2 dob" name="dob" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Degree </label>
+                                <input type="text" class="form-control p-2 degree" name="degree" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Year of Passing </label>
+                                <input type="text" class="form-control p-2 yop" name="yop" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password: </label>
                                 <input type="password" class="form-control p-2 password" name="password" required>
                             </div>
-                            <br/>
+                            <div class="mb-3">
+                                <label class="form-label">Confirm Password: </label>
+                                <input type="password" class="form-control p-2 cpassword" name="cpassword" required>
+                            </div>
+                            <br />
                             <button type="submit" class="btn btn-success submit">Submit</button>
                         </form>
                     </div>

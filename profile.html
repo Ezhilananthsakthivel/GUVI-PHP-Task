@@ -26,19 +26,15 @@
             <div class="col-md-5 col-sm-5 mt-5">
                 <div class="mt-5">
                     <div class="card-body">
-                        <h3 class="card-title text-center">User Profile</h3>
+                        <h2 class="card-title text-center">User Profile</h2>
                         <hr />
-                        <h4></h4>
+                        <h3 class="text-center uname"></h4>
+                        <h3 class="text-center email"></h3>
                         <br />
                         <div style="margin-left: 25rem;">
-                            <button class="btn btn-primary">Edit</button>
+                            <button class="btn btn-primary edit">Edit</button>
                         </div>
                         <form>
-                            <div class="mb-3">
-                                <label class="form-label">Email: </label>
-                                <input type="email" class="form-control p-2 email" name="email"
-                                    aria-describedby="emailHelp" required>
-                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Phone Number: </label>
                                 <input type="text" class="form-control p-2 pnumber" name="pnumber" readonly>
@@ -53,15 +49,17 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Year of Passing: </label>
-                                <input type="text" class="form-control p-2 ypo" name="yop" readonly>
+                                <input type="text" class="form-control p-2 yop" name="yop" readonly>
                             </div>
                             <br />
+                            <button type="submit" class="btn btn-primary submit d-none">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="./js/profile.js"></script>
 </body>
 
 </html>
