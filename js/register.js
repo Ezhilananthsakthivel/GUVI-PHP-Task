@@ -14,7 +14,7 @@ $(document).ready(function () {
                     $('.submit').val('Loading...')
                 },
                 success: function (res) {
-                    if (res != "User Already Exists") {
+                    if (res == "Registration Successfully") {
                         alert(res)
                         $('form')[0].reset()
                         window.location = 'index.html'

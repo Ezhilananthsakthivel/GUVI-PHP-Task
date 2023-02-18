@@ -2,7 +2,7 @@
 
 require '../vendor/autoload.php';
 
-$con = mysqli_connect('localhost:3308','root','','guvi_task');
+$con = new mysqli('localhost:3308', 'root', '', 'guvi_task');
 $mcon = new MongoDB\Client("mongodb://localhost:27017");
 
 $email = $_POST["email"];
@@ -13,17 +13,25 @@ $dob = $_POST["dob"];
 $degree = $_POST["degree"];
 $yop = $_POST["yop"];
 
-$user = mysqli_query($con,"select * from users where uname = '$uname'");
+$sql = "SELECT * FROM users WHERE uname=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param('s', $uname);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
 
-if(mysqli_num_rows($user) > 0){
+if ($result->num_rows > 0) {
     echo "User Already Exists";
-    exit();
-}
-    
-    mysqli_query($con,"insert into users (uname,password,email) values ('$uname','$password','$email')");
+} else {
+    $sql = "INSERT into users (uname,pass,email) VALUES (?,?,?)";
+    $stmti = $con->prepare($sql);
+    $stmti->bind_param('sss', $uname, $password, $email);
+    $stmti->execute();
+    $stmti->close();
 
     $db = $mcon->guvitask->users;
-    $db->insertOne(['uname'=> $uname, 'pnumber'=> $pnumber, 'dob'=> $dob, 'degree'=> $degree, 'yop'=> $yop]);
+    $db->insertOne(['uname' => $uname, 'pnumber' => $pnumber, 'dob' => $dob, 'degree' => $degree, 'yop' => $yop]);
     echo "Registration Successfully";
+}
 
 ?>
