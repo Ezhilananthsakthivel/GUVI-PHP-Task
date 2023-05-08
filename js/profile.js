@@ -1,15 +1,30 @@
 $(document).ready(function () {
-    const user = JSON.parse(window.localStorage.getItem("user"))
+    const user = window.localStorage.getItem("redstr")
     if (!user) {
         window.location = 'index.html'
     }
     else {
-        $(".uname").html(`User Name: ${user.uname}`);
-        $(".email").html(`Email: ${user.email}`)
-        $(".pnumber").val(user.pnumber)
-        $(".dob").val(user.dob)
-        $(".degree").val(user.degree)
-        $(".yop").val(user.yop)
+        $.ajax({
+            url: 'php/profile.php',
+            type: 'POST',
+            data: user,
+            success: function (res) {
+                res = JSON.parse(res)
+                let { dbuser } = res
+                if (res.status == "User Found") {
+                    $(".uname").html(`User Name: ${dbuser.uname}`);
+                    $(".email").html(`Email: ${res.email}`)
+                    $(".pnumber").val(dbuser.pnumber)
+                    $(".dob").val(dbuser.dob)
+                    $(".degree").val(dbuser.degree)
+                    $(".yop").val(dbuser.yop)
+                }
+                else {
+                    alert("Login")
+                    window.location = 'index.html'
+                }
+            }
+        })
 
         $(".edit").click(function () {
             $(".submit").removeClass("d-none")
@@ -23,11 +38,15 @@ $(document).ready(function () {
             $.ajax({
                 url: 'php/profile.php',
                 type: 'POST',
-                data: $('form').serialize() + "&uname=" + user.uname,
+                data: $('form').serialize() + "&redstr=" + user,
                 success: function (res) {
-                    alert(res)
-                    localStorage.clear()
-                    location = "index.html"
+                    if (res) {
+                        alert(res)
+                        localStorage.clear()
+                        location = "index.html"
+                    }
+                    else
+                        location = "index.html"
                 }
             })
         })

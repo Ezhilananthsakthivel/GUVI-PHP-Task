@@ -33,5 +33,3 @@ if ($result->num_rows > 0) {
     $db->insertOne(['uname' => $uname, 'pnumber' => $pnumber, 'dob' => $dob, 'degree' => $degree, 'yop' => $yop]);
     echo "Registration Successfully";
 }
-
-?>

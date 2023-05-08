@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('form').submit(function (e) {
         e.preventDefault()
 
@@ -12,8 +13,9 @@ $(document).ready(function () {
             success: function (res) {
                 res = JSON.parse(res)
                 if (res.status) {
-                    const { dbuser } = res
-                    window.localStorage.setItem('user', JSON.stringify({ "uname": res.uname, "email": res.email, "pnumber": dbuser.pnumber, "dob": dbuser.dob, "degree": dbuser.degree, "yop": dbuser.yop }))
+                    //const { dbuser } = res
+                    //window.localStorage.setItem('user', JSON.stringify({ "uname": res.uname, "email": res.email, "pnumber": dbuser.pnumber, "dob": dbuser.dob, "degree": dbuser.degree, "yop": dbuser.yop }))
+                    window.localStorage.setItem('redstr', res.redstr)
                     $('form')[0].reset()
                     window.location = 'profile.html'
                 }
@@ -22,6 +24,5 @@ $(document).ready(function () {
                 }
             }
         })
-
     })
 })

@@ -20,7 +20,7 @@ $(document).ready(function () {
                         window.location = 'index.html'
                     }
                     else {
-                        alert(res)
+                        alert(JSON.parse(res))
                     }
                 }
             })
